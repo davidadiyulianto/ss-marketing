@@ -1,0 +1,213 @@
+/* detailed utm list tofu paid and mofu paid */
+case 
+/* FACEBOOK */
+		
+		WHEN
+	        utm_campaign ILIKE 'FB-PE'
+	        THEN 
+	        'FB-PE'
+        WHEN
+	        (
+	          	utm_source ILIKE 'facebook.com' 
+	          	OR 
+	            utm_source ILIKE 'facebook'
+	        ) 
+        	AND 
+        	utm_medium ILIKE 'social'
+        	THEN 
+        	'SC-FB'
+	    
+	    WHEN
+            utm_source ILIKE 'FACEBOOK' 
+            AND
+            utm_medium ILIKE 'PAID-SOCIAL' 
+            AND
+            utm_campaign not ILIKE '%-RT-%' 
+            AND
+            utm_campaign not ILIKE '%CUSTOMER%'
+            THEN 
+            'TCA-FB'
+
+        WHEN
+            utm_source ILIKE 'FACEBOOK' 
+            AND
+            utm_campaign ILIKE '%-RT-%' 
+            AND
+            utm_campaign NOT ILIKE '%-CU-%' 
+            AND
+            utm_campaign NOT ILIKE '%CUSTOMER%'
+            THEN 
+            'TRT-FB'
+
+        WHEN
+            utm_source ILIKE '%FACEBOOK%' 
+            AND 
+            	(
+                utm_campaign ILIKE '%-RT-CU-%' 
+                OR
+                utm_campaign ILIKE '%CUSTOMER%'
+            	)
+            THEN 
+            'MOFU-FB'
+/* GOOGLE */
+    	
+    WHEN
+    		utm_source ILIKE 'GOOGLE' 
+    		AND
+    		utm_campaign ILIKE '%-WEB-%'
+    		AND
+    		utm_campaign NOT ILIKE '%-AE-%'
+    		THEN 
+    		'TCA-Google'
+
+   WHEN 
+    		utm_source ILIKE 'GOOGLE' 
+    		AND
+    		UTM_CAMPAIGN ILIKE '%-WEB-%'
+    		AND	
+    			(
+    			utm_campaign ILIKE '%-AE-%'
+    			OR 
+    			UTM_CAMPAIGN ILIKE '%-RT-VS-%'
+    			)
+    		THEN 
+    		'TRT-Google'
+/* SOCMED */
+	WHEN
+            utm_source = 'instagram' 
+            AND
+            utm_medium = 'social'
+            THEN 
+            'SC-insta'
+    WHEN
+            utm_source ILIKE 'BBM' 
+            AND
+            utm_medium ILIKE 'SOCIAL'
+            THEN 
+            'SC-BBM'
+
+    WHEN
+            utm_source ILIKE 'LINE%' 
+            THEN 
+            'LINE'
+
+/* MOFU */
+	WHEN 
+            utm_medium ILIKE 'EMAIL'
+            THEN 
+            'EMAIL'
+
+    WHEN 
+            utm_medium ILIKE 'SMS'
+            THEN 
+            'SMS'
+
+    WHEN
+            utm_medium ILIKE 'Pushnot' 
+            OR
+            utm_medium ILIKE 'ONESIGNAL'
+            THEN 
+            'Pushnotif'
+
+/* MOFU PARTNER */
+	WHEN
+	        utm_source ILIKE 'CRITEO'
+	        AND
+	       		(
+	       		utm_medium ILIKE '%FC'
+	       		OR
+	        	utm_campaign ILIKE '%FC-%'
+	        	)
+	        THEN 
+	        'MOFU-CRITEO'
+	WHEN
+	        utm_source ILIKE 'RTBHOUSE'
+	        AND
+	        (
+	        utm_medium ILIKE 'CPC' 
+	        or 
+	        utm_medium ILIKE 'PAID-DISPLAY'
+	        )
+	        AND
+	        utm_campaign ILIKE '%buyer%'
+	        THEN 'MOFU-RTBHOUSE'
+
+/* TOFU PARTNER */	
+	WHEN
+	        utm_source ILIKE 'CRITEO'
+	        AND
+	       		(
+	       		utm_medium ILIKE '%FV'
+	       		OR
+	        	utm_campaign ILIKE '%FV-%'
+	        	)
+	        THEN 
+	        'TCA-CRITEO'
+	WHEN
+	        utm_source ILIKE 'freakout'
+	        AND
+	        utm_medium ILIKE 'PAID-SOCIAL'
+	        THEN 'TCA-FREAKOUT'
+	WHEN
+	        utm_source ILIKE 'BABE'
+	        AND
+	        utm_medium ILIKE 'CPC'
+	        THEN 'TCA-BABE'
+	WHEN
+	        utm_source ILIKE 'ADSKOM'
+	        AND
+	        utm_medium ILIKE 'CPC'
+	        THEN 'TCA-ADSKOM'
+	WHEN
+	        utm_source ILIKE 'INNITY'
+	        AND
+	        utm_medium ILIKE 'CPC'
+	        THEN 'TCA-INNITY'
+	WHEN
+	        utm_source ILIKE 'IMX'
+	        AND
+	        utm_medium ILIKE 'CPC'
+	        THEN 'TCA-IMX'
+	WHEN
+	        utm_source ILIKE 'BBM'
+	        AND
+	        utm_medium ILIKE 'PAID%'
+	        THEN 'TCA-BBM'
+	WHEN
+	        utm_source ILIKE 'RTBHOUSE'
+	        AND
+	        (
+	        utm_medium ILIKE 'CPC' 
+	        or 
+	        utm_medium ILIKE 'PAID-DISPLAY'
+	        )
+	        AND
+	        utm_campaign not ILIKE '%buyer%'
+	        THEN 'TCA-RTBHOUSE'
+/* TVC */
+        WHEN
+            (
+                utm_source is null AND
+                utm_campaign = 'tvc'
+            ) 
+            OR
+            utm_medium = 'tvc'
+            THEN 'TVC'
+/* ORGANIC */ 
+        WHEN
+            utm_source = 'google' 
+            AND
+            utm_medium ='organic'
+            THEN 
+            'Gorganic'
+/* REMOVE COMMENT FOR ATTRIBUTION */
+	/*	
+	WHEN	
+			utm_source is null
+			and
+            utm_medium is null
+            and
+            utm_campaign is null
+            THEN
+            'direct'
+    */
