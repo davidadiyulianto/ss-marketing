@@ -54,19 +54,23 @@ case
     WHEN
     		utm_source ILIKE 'GOOGLE' 
     		AND
-    		utm_campaign ILIKE '%-WEB-%'
+    		utm_campaign ILIKE '%-TC-%'
     		AND
     		utm_campaign NOT ILIKE '%-AE-%'
+
     		THEN 
     		'TCA-Google'
 
    WHEN 
     		utm_source ILIKE 'GOOGLE' 
-    		AND
-    		UTM_CAMPAIGN ILIKE '%-WEB-%'
     		AND	
-    			(
-    			utm_campaign ILIKE '%-AE-%'
+    			((
+    			UTM_CAMPAIGN ILIKE '%search%'
+                and
+                utm_campaign ILIKE '%web%'
+                )
+                or
+                utm_campaign ILIKE '%-AE-%'
     			OR 
     			UTM_CAMPAIGN ILIKE '%-RT-VS-%'
     			)
