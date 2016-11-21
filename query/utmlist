@@ -150,12 +150,20 @@ case
 	WHEN
 	        utm_source ILIKE 'freakout'
 	        AND
-	        utm_medium ILIKE 'PAID-SOCIAL'
+	        	(
+			utm_medium ILIKE 'PAID-SOCIAL'
+			or
+			utm_medium ILIKE 'PAID-DISPLAY'
+			)
 	        THEN 'TCA-FREAKOUT'
 	WHEN
 	        utm_source ILIKE 'BABE'
 	        AND
-	        utm_medium ILIKE 'CPC'
+	        	(
+			utm_medium ILIKE 'CPC'
+			or
+			utm_medium ILIKE 'PAID-DISPLAY'
+			)
 	        THEN 'TCA-BABE'
 	WHEN
 	        utm_source ILIKE 'ADSKOM'
@@ -165,7 +173,11 @@ case
 	WHEN
 	        utm_source ILIKE 'INNITY'
 	        AND
-	        utm_medium ILIKE 'CPC'
+	        	(
+			utm_medium ILIKE 'CPC'
+			OR
+			utm_medium ILIKE 'PAID-DISPLAY'
+			)
 	        THEN 'TCA-INNITY'
 	WHEN
 	        utm_source ILIKE 'IMX'
