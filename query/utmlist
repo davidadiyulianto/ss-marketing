@@ -110,6 +110,8 @@ case
             utm_medium ILIKE 'Pushnot' 
             OR
             utm_medium ILIKE 'ONESIGNAL'
+	    OR
+	    utm_source ILIKE 'markotop'
             THEN 
             'Pushnotif'
 
