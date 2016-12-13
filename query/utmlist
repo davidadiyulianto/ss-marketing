@@ -51,13 +51,20 @@ case
             'MOFU-FB'
 /* GOOGLE */
     	
-    WHEN
+WHEN
     		utm_source ILIKE 'GOOGLE' 
     		AND
+    		(
+    		(
     		utm_campaign ILIKE '%-TC-%'
     		AND
     		utm_campaign NOT ILIKE '%-AE-%'
-
+    		)
+    		OR
+    		(
+    		utm_medium = 'cpc'
+    		)
+    		)
     		THEN 
     		'TCA-Google'
 
@@ -94,6 +101,12 @@ case
             utm_source ILIKE 'LINE%' 
             THEN 
             'LINE'
+	WHEN
+    		utm_source ILIKE 'instagram'
+    		AND
+    		utm_medium ILIKE 'PAID-DISPLAY'
+    		THEN
+    		'TOFU-Insta'
 
 /* MOFU */
 	WHEN 
