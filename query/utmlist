@@ -161,7 +161,7 @@ WHEN
 	        	utm_campaign ILIKE '%FV-%'
 	        	)
 	        THEN 
-	        'TCA-CRITEO'
+	        'TRT-CRITEO'
 	WHEN
 	        utm_source ILIKE 'freakout'
 	        AND
@@ -214,7 +214,7 @@ WHEN
 	        )
 	        AND
 	        utm_campaign not ILIKE '%buyer%'
-	        THEN 'TCA-RTBHOUSE'
+	        THEN 'TRT-RTBHOUSE'
 /* TVC */
         WHEN
             (
