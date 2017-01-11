@@ -159,6 +159,10 @@ WHEN
 	       		utm_medium ILIKE '%FV'
 	       		OR
 	        	utm_campaign ILIKE '%FV-%'
+                OR
+                utm_campaign = 'beli2gratis1'
+                or
+                utm_campaign ILIKE 'coupon%%'
 	        	)
 	        THEN 
 	        'TRT-CRITEO'
@@ -231,14 +235,19 @@ WHEN
             utm_medium ='organic'
             THEN 
             'Gorganic'
-/* REMOVE COMMENT FOR ATTRIBUTION */
-	/*	
-	WHEN	
-			utm_source is null
+	    WHEN	
+			utm_source = 'direct'
 			and
-            utm_medium is null
-            and
-            utm_campaign is null
+            (utm_medium is null or utm_medium = '')
             THEN
             'direct'
-    */
+/*chat*/
+        WHEN
+            utm_medium = 'messages'
+            THEN
+            'chat'
+/*bnb*/
+        WHEN
+            utm_source = 'quiz-maker'
+            THEN
+            'BNB'
