@@ -1,4 +1,3 @@
-/*test*/
 /* detailed utm list tofu paid and mofu paid */
 case 
 /* FACEBOOK */
@@ -124,8 +123,12 @@ WHEN
             utm_medium ILIKE 'Pushnot' 
             OR
             utm_medium ILIKE 'ONESIGNAL'
-	    OR
-	    utm_source ILIKE 'markotop'
+	       OR
+	        (
+            utm_source ILIKE 'markotop'
+            and
+            utm_medium ILIKE 'APPS'
+            )
             THEN 
             'Pushnotif'
 
