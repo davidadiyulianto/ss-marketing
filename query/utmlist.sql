@@ -54,17 +54,9 @@ case
 WHEN
     		utm_source ILIKE 'GOOGLE' 
     		AND
-    		(
-    		(
     		utm_campaign ILIKE '%-TC-%'
     		AND
     		utm_campaign NOT ILIKE '%-AE-%'
-    		)
-    		OR
-    		(
-    		utm_medium = 'cpc'
-    		)
-    		)
     		THEN 
     		'TCA-Google'
 
