@@ -70,8 +70,8 @@ case
         and
         (
         utm_campaign ILIKE '%search%'
-        and
-        utm_campaign ILIKE '-RT%'
+        or
+        utm_campaign ILIKE '%-RT%'
         )
         THEN
         'TRT-GOOGLE'
