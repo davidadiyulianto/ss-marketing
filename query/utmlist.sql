@@ -50,61 +50,31 @@ case
             'MOFU-FB'
 /* GOOGLE */
         
-WHEN
-            utm_source ILIKE 'GOOGLE' 
-            AND
-            (
-            utm_campaign ILIKE '%-TC-%'
-            AND
-            utm_campaign NOT ILIKE '%-AE-%'
-            )
-            THEN 
-            'TCA-Google'
-
-   WHEN 
-            utm_source ILIKE 'GOOGLE' 
-            AND 
-                ((
-                UTM_CAMPAIGN ILIKE '%search%'
-                or
-                utm_campaign ILIKE '%web%'
-                )
-                or
-                utm_campaign ILIKE '%-AE-%'
-                OR 
-                UTM_CAMPAIGN ILIKE '%-RT-VS-%'
-                )
-            THEN 
-            'TRT-Google'
     WHEN
-            utm_source ILIKE 'google'
-            and
-            utm_medium ILIKE 'cpc'
-            and
-            utm_campaign ILIKE '-display'
-            and
-            (
-            utm_campaign ILIKE '%event%'
-            or
-            utm_campaign ILIKE '%-CA%'
-            )
-            THEN
-            'TCA-display'
+        utm_source ILIKE 'GOOGLE'
+        and
+        (
+        utm_campaign ILIKE '%-event%'
+        or
+        utm_campaign ILIKE '%-CA%'
+        or
+        utm_campaign ILIKE '%-TC%'
+        )
+        and
+        utm_campaign not ILIKE '%-RT%'   
+        THEN
+        'TCA-GOOGLE'
 
     WHEN
-            utm_source ILIKE 'google'
-            and
-            utm_medium ILIKE 'cpc'
-            and
-            utm_campaign ILIKE '-display'
-            and
-            (
-            utm_campaign ILIKE '%gdisplay%'
-            and
-            utm_campaign ILIKE '%-RT-VS-%'
-            )
-            THEN
-            'TRT-display'
+        utm_source ILIKE 'google'
+        and
+        (
+        utm_campaign ILIKE '%search%'
+        and
+        utm_campaign ILIKE '-RT%'
+        )
+        THEN
+        'TRT-GOOGLE'
             
 /* SOCMED */
     WHEN
