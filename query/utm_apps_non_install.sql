@@ -134,6 +134,17 @@ CASE
             utm_campaign not ILIKE '%buyer%'
     THEN 'TRT-RTBHOUSE'
 
+    WHEN utm_source ILIKE 'RTBHOUSE'
+            AND
+            (
+            utm_medium ILIKE 'CPC' 
+            or 
+            utm_medium ILIKE 'PAID-DISPLAY'
+            )
+            AND
+            utm_campaign ILIKE '%buyer%'
+    THEN 'MOFU-RTBHOUSE'
+
    	WHEN utm_source = 'direct'
    		AND
    		utm_medium IS NULL
