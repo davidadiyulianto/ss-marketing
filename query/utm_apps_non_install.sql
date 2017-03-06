@@ -16,7 +16,7 @@ CASE
 	WHEN utm_source = 'criteo_int'
 		 AND 
 		 utm_campaign = 'ExistingCustomer'
-	THEN 'MOFU-criteo'
+	THEN 'MOFU-CRITEO'
 
 	WHEN utm_source = 'vizury_int'
 		 AND
@@ -26,7 +26,7 @@ CASE
 	WHEN utm_source = 'criteo_int'
 		 AND 
 		 utm_campaign = 'NewCustomer'
-	THEN 'TRT-criteo'
+	THEN 'TRT-CRITEO'
 
 	WHEN utm_source ILIKE 'OneSignal'
 		 OR
@@ -138,10 +138,12 @@ CASE
    		AND
    		utm_medium IS NULL
    	THEN 'direct'
+
+    WHEN utm_medium ILIKE 'sms'
+    THEN 'SMS'
    	
    	WHEN ua.public_id IS NOT NULL
    	THEN 'ORDER'
-
 
    	ELSE CONCAT(IFNULL(utm_source,''),'-',IFNULL(utm_campaign,''))
    	END AS CHANNEL
