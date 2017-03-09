@@ -6,11 +6,7 @@ case
             THEN 
             'FB-PE'
         WHEN
-            (
-                utm_source ILIKE 'facebook.com' 
-                OR 
-                utm_source ILIKE 'facebook'
-            ) 
+            utm_source ILIKE 'facebook%'
             AND 
             utm_medium ILIKE 'social'
             THEN 
